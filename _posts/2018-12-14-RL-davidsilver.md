@@ -1,34 +1,33 @@
 ---
 layout: post
 title: "RL Course by David Silver"
-date: 2018-12-13
+date: 2018-12-14
 categories: blog
 tags: [RL,ML]
-image: http://gastonsanchez.com/images/blog/mathjax_logo.png
 ---
 # RL by David Silver
 Using 2 assumption:  
 1.  **Reward hypothesis**: Every goal can be achieved by achieved a sequence of reward signal (expected cumulative reward)  
 2. **Information State** (Markov property): contains all useful information from the history. -> P[St+1|St] = P[St+1|S1,...,St]. So we don't need to take account of the long tail of history (burden)  
-"The future is independent to the pass given the present"  
+*"The future is independent to the pass given the present"*
 
 State:  
 - **Fully Observable Environments**: When Se = Sa , Using MDP  
 - **Partially Observable Environments**: Se ≠ Sa, using MOMDP  
 
 ## RL Agent Taxonomy
-[image:E7EE70F0-5A9A-4868-A749-1B255CCFBEC9-3510-0000C968DE725608/9AFACCDF-C313-45DF-83E3-1739C88B9D29.png]
 
 # Markov Decision Processes
-Markov process is a tuple <S,Pi>  
+**Markov process** is a tuple <S,Pi>  
 - S is a set of (finite) states  
 - P is a state transition probability matrix  
 add (Reward, discount value)  
--> Markov Reward Process: <S,P, R, γi>  = Markov process add reward information (R, γi)
+**Markov Reward Process** <S,P, R, γi>  = *Markov process* + reward information (R, γi)
 - R = reward function Rs = E [Rt+1 | St = s],  because Rt+1 is a probability distribution.
-- Return Gt   
+- Return Gt is the sum of all reward from time-step t to the end of the enviroment (terminal state), usually with weight decay γ
 Bellman equation  
--> Markov Decision Process:  M = <S, A,P, R, γi> and a policy π  
+**Markov Decision Process**:  M = <S, A,P, R, γi> and a policy π  
+- In this model, policy π is added for the choice of actions.
 
 # Planning by Dynamic programming.
 There are 2 nice properties that DP is used for solving MDP optimal problem (because MDP fit to these properties):   
@@ -45,13 +44,12 @@ synchronous update iteration.
 - Policy Iteration -> using BEE + Greedy Policy wrt value Improvement
 - Value Iteration -> using BEE and "optimal v(s) -> optimal v(s') with s' is precessor of s"
 
-
 # Model-free prediction
 In the unknown MDP enviroment, we must use different evaluation schema &  control schema. 
 ## Monte Carlo
 - Record the value of each path under the policy, then average them to estimate the value function of each state. 
 - The trick is that we don't need to carry all the record by using **incremental mean** to update value function each step, and throw it after: 
-$$ \begin{aligned} \mu _ { k } & =  \mu _ { k - 1 } + \frac { 1 } { k } \left( x _ { k } - \mu _ { k - 1 } \right) \end{aligned} $$ z
+$\begin{aligned} \mu _ { k } & =  \mu _ { k - 1 } + \frac { 1 } { k } \left( x _ { k } - \mu _ { k - 1 } \right) \end{aligned}$ z
 from that, we apply to evaluate value function: 
 $V \left( S _ { t } \right) \leftarrow V \left( S _ { t } \right) + \alpha \left( G _ { t } - V \left( S _ { t } \right) \right)$
 with  $ \alpha = \frac { 1 } { N \left( S _ { t } \right) }$
@@ -71,6 +69,15 @@ $V \left( S _ { t } \right) \leftarrow V \left( S _ { t } \right) + \alpha \left
 - Term λ is made for weighed return 
 $G _ { t } ^ { \lambda } = ( 1 - \lambda ) \sum _ { k = 1 } ^ { \infty } \lambda ^ { k - 1 } G _ { t } ^ { ( k ) }$ 
 $G _ { t } ^ { ( n ) } = R _ { t + 1 } + \gamma R _ { t + 2 } + \ldots + \gamma ^ { n } V \left( S _ { t + n } \right)$
+
+
+ 
+
+
+
+	
+#Reinforcementlearning
+
 
 
  
