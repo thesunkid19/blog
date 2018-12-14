@@ -9,7 +9,7 @@ tags: [RL,ML]
 RL using the reward assumption. It states that:
 - **Reward hypothesis**: Every goal can be achieved by achieving a sequence of reward signal (expected cumulative reward)  
 
-**Information State** (Markov property): contains all useful information from the history. -> P[St+1|St] = P[St+1|S1,...,St]. So we don't need to take account of the long tail of history (burden)  
+**Information State** (Markov property): contains all useful information from the history. -> $P[St+1|St] = P[St+1|S1,...,St]$. So we don't need to take account of the long tail of history (burden)  
 *"The future is independent to the pass given the present"*
 
 State:  
