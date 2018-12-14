@@ -25,7 +25,7 @@ State:
 
 **Markov Reward Process** is a tuple <S,P, R, γi>  = *Markov process* + reward information (R, γi)
 - Rs = reward function (not just a scalar), $$ Rs = E[Rt+1 / St = s] $$,  because Rt+1 is a probability distribution.
-- Return Gt is the sum of all reward from time-step t to the end of the enviroment (terminal state), usually with weight decay γ $$ Gt = E[Rt+1+γ*Rt+2+...|St = s] $$
+- Return Gt is the sum of all reward from time-step t to the end of the enviroment (terminal state), usually with weight decay γ $$ Gt = E[Rt+1+γ*Rt+2+.../ St = s] $$
 
 **Markov Decision Process** is a tuple M = <S, A,P, R, γi> and a policy π  
 - In this model, policy π is added for the choice of actions.
