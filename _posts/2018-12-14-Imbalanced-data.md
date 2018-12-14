@@ -23,7 +23,7 @@ Ngoài ra còn một số metric khác phù hợp cho bài toán này [[1]](http
 
 ### Oversampling data
 Bằng cách duplicate nhiều lần dữ liệu hình ảnh của class có số mẫu nhỏ, ta được 1 bộ data có số mẫu giữa các class cân bằng hơn. Trong cuộc thi Zalo AI, vấn đề imbalanced data được nhiều nhóm giải quyết bằng giải pháp oversampling (upsampling) [[2]](https://www.facebook.com/groups/machinelearningcoban/permalink/551444705312941/).
-Tuy nhiên, cần thận trọng trong số lần duplicate mẫu, vì bản chất model CNN sau khi trainning sẽ giữ lại các invariant features nhận được từ data trainning, việc 1 bức ảnh xuất hiện quá nhiều lần sẽ khiến model bị overfitting với các feature ở bức ảnh đó. Có thể thấy như trong giải pháp của đội tham gia Zalo AI trên, tỷ lệ upsampling data được tune khá là công phu. 
+Tuy nhiên, cần thận trọng trong việc chọn số lần duplicate mẫu, vì về bản chất model CNN sau khi trainning sẽ giữ  lại (học) các invariant features nhận được từ trainning, việc 1 bức ảnh xuất hiện quá nhiều lần sẽ khiến model bị overfitting với các feature ở bức ảnh đó. Có thể thấy như trong giải pháp của đội tham gia Zalo AI trên, tỷ lệ upsampling data được tune khá là công phu. 
 
 Ngoài ra, ta còn có thể oversampling bằng cách augmentation data cho các lớp có số lượng mẫu ít, trong khi không apply điều này cho các lớp còn lại.
 ![](https://raw.githubusercontent.com/thesunkid19/blog/gh-pages/img/oversampling.png)
@@ -33,10 +33,10 @@ Tương tự như ý tưởng oversampling, phương pháp undersampling chỉ t
 Giải pháp này chỉ hiệu quả trong trường hợp số lượng data là rất lớn so với model. Chẳng hạn như ta có quá nhiều hình ảnh ở các đoạn đường không có vật cản, khi đó ta có thể lọc bỏ bớt đi các mẫu này trước khi đưa vào traninng.
 
 ### Weighted loss
-Cross-Entropy loss là một hàm loss thông thường được sử dụng trong các bài toán classify. Giải sử ta có bài toán classify như đã được nêu trước đó. Khi ta sử dụng Cross entropy loss cho bài toán này, thì loss ở 1 mẫu thuộc lớp t sẽ có công thức: 
+Cross-Entropy loss là một hàm loss thông thường được sử dụng trong các bài toán classify. Giải sử ta có bài toán classify như đã được nêu trước đó. Khi ta sử dụng Cross entropy loss cho bài toán này, thì loss ở 1 mẫu thuộc lớp t sẽ có công thức: \\
 $\mathrm { CE } \left( p _ { \mathrm { t } } \right) = - \log \left( p _ { \mathrm { t } } \right)$
 
-Ở phương pháp này, ta sử dụng một làm loss khác tinh chỉnh dựa trên C-E để giải quyết vấn đề không cân xứng trong dữ liệu. Với ý tưởng chủ đạo là thêm vào một trọng số khác nhau cho các lớp vào loss:
+Ở phương pháp này, ta sử dụng một làm loss khác tinh chỉnh dựa trên C-E để giải quyết vấn đề không cân xứng trong dữ liệu. Với ý tưởng chủ đạo là thêm vào một trọng số khác nhau cho các lớp vào loss:\\
 $\mathrm { WCE } \left( p _ { \mathrm { t } } \right) = - \alpha _ { \mathrm { t } } \log \left( p _ { \mathrm { t } } \right)$
 
 Giải sử trong bài toán này, ta chọn α0 = 0.25 (lớp không vật cản),  a1 = 0.75 (lớp có vật cản) thì hàm loss sẽ đặt nặng hơn việc sai lệch trong quá trình train của lớp có vật cản. Từ đó sẽ điều chỉnh weight của model nhiều hơn theo lớp này.
