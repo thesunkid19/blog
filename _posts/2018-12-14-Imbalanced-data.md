@@ -1,7 +1,7 @@
 ---
 layout: post
 title: "[Deep learning] Xử lý vấn đề dữ liệu hình ảnh bị chênh lệch về số lượng giữa các class"
-date: 2018-12-14
+date: 2018-12-15
 categories: blog
 tags: [DL,CV]
 ---
