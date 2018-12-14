@@ -9,10 +9,10 @@ image: http://gastonsanchez.com/images/blog/mathjax_logo.png
 
 Hello world!
 
- This is my very first post to reach out to the big world. Just wanna say hi now and quote this:
+ This is my very first post to reach out to the big world. 
 
 "In the vastness of space and the immensity of time,
 it is my joy to share
 a planet and an epoch with you"
 
--- ζ -- 
+**ζ**

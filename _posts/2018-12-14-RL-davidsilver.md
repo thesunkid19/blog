@@ -5,10 +5,11 @@ date: 2018-12-14
 categories: blog
 tags: [RL,ML]
 ---
-# RL by David Silver
-Using 2 assumption:  
-1.  **Reward hypothesis**: Every goal can be achieved by achieved a sequence of reward signal (expected cumulative reward)  
-2. **Information State** (Markov property): contains all useful information from the history. -> P[St+1|St] = P[St+1|S1,...,St]. So we don't need to take account of the long tail of history (burden)  
+# Lecture 1: Introduction to Reinforcement Learning
+RL using the reward assumption. It states that:
+- **Reward hypothesis**: Every goal can be achieved by achieving a sequence of reward signal (expected cumulative reward)  
+
+**Information State** (Markov property): contains all useful information from the history. -> P[St+1|St] = P[St+1|S1,...,St]. So we don't need to take account of the long tail of history (burden)  
 *"The future is independent to the pass given the present"*
 
 State:  
@@ -17,22 +18,22 @@ State:
 
 ## RL Agent Taxonomy
 
-# Markov Decision Processes
+# Lecture 2: Markov Decision Processes
 **Markov process** is a tuple <S,Pi>  
 - S is a set of (finite) states  
 - P is a state transition probability matrix add (Reward, discount value)  
 
-**Markov Reward Process** <S,P, R, γi>  = *Markov process* + reward information (R, γi)
-- R = reward function $$ s = E[Rt+1 / St = s] $$,  because Rt+1 is a probability distribution.
-- Return Gt is the sum of all reward from time-step t to the end of the enviroment (terminal state), usually with weight decay γ
+**Markov Reward Process** is a tuple <S,P, R, γi>  = *Markov process* + reward information (R, γi)
+- Rs = reward function (not just a scalar), $$ Rs = E[Rt+1 / St = s] $$,  because Rt+1 is a probability distribution.
+- Return Gt is the sum of all reward from time-step t to the end of the enviroment (terminal state), usually with weight decay γ $$ Gt = E[Rt+1+γ*Rt+2+...|St = s] $$
 
-**Markov Decision Process**:  M = <S, A,P, R, γi> and a policy π  
+**Markov Decision Process** is a tuple M = <S, A,P, R, γi> and a policy π  
 - In this model, policy π is added for the choice of actions.
 
-# Planning by Dynamic programming.
+# Lecture 3: Planning by Dynamic programming.
 There are 2 nice properties that DP is used for solving MDP optimal problem (because MDP fit to these properties):   
 1. Optimal structure: break it down and solve subproblem = solving optimal problem
-2. Overlapping subproblem: solving more fast by using cached, like using memory in Dynamic programming in competitive code.
+2. Overlapping subproblem: solving more fast by using cached, like using memory in Dynamic programming from programming algorithm.
 
 There are 2 big task we want to solve in RL (by solving these tasks, we've solved the underlying task of RL - finding best policy to act):
 1. Evaluate value function: to answer the question "under policy pi, what is our value evaluation" then
@@ -40,11 +41,11 @@ There are 2 big task we want to solve in RL (by solving these tasks, we've solve
 ## How to evaluate policy pi: update it with DP 
 synchronous update iteration.
 **Prediction problem**: random initial then iterative update the value function -> using Bellman expectation equation
-**Controll problem:**
+**Control problem:**
 - Policy Iteration -> using BEE + Greedy Policy wrt value Improvement
 - Value Iteration -> using BEE and "optimal v(s) -> optimal v(s') with s' is precessor of s"
 
-# Model-free prediction
+# Lecture 4: Model-free prediction
 In the unknown MDP enviroment, we must use different evaluation schema &  control schema. 
 ## Monte Carlo
 - Record the value of each path under the policy, then average them to estimate the value function of each state. 
@@ -72,7 +73,7 @@ $G _ { t } ^ { ( n ) } = R _ { t + 1 } + \gamma R _ { t + 2 } + \ldots + \gamma 
 
 
  
-
+**ζ**
 
 
 	
