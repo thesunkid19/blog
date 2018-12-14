@@ -50,11 +50,14 @@ Focal loss thực tế cũng là một làm loss tinh chỉnh từ C-E, với hy
 
 $\mathrm { FL } \left( p _ { t } \right) = - \left( 1 - p _ { t } \right) ^ { \gamma } \log \left( p _ { t } \right)$
 
-Có thể hiểu Focal loss hoạt động như một Weighted C-E loss, tuy nhiên hệ số log của loss này không phải là một tham số cố định đặt ra nhằm balance lại số mẫu dữ liệu như WCE, hệ số của Focal loss có thể được hiểu là tự điều chỉnh (adaptive parameter) theo độ chính xác của xác suất dự đoán từ model (pt).
+Có thể hiểu Focal loss hoạt động như một Weighted C-E loss, tuy nhiên hệ số log của loss này không phải là một tham số cố định đặt ra nhằm balance lại số mẫu dữ liệu như WCE, hệ số của Focal loss có thể được hiểu là tự điều chỉnh (adaptive parameter) theo độ chính xác của xác suất dự đoán từ model (pt). Trong quá trình trainning, khi mới bắt đầu, hàm loss của các mẫu ở những lớp khác nhau là như nhau, tuy nhiên càng về sau, các lớp chiếm đa số sẽ nhanh chóng có độ chính xác cao hơn (pt cao), khi đó model sẽ giảm tập trung vào việc học từ mẫu của các lớp này.
 
-Ví dụ: khi pt của 1 mẫu đang train thuộc lớp t là nhỏ, FL(pt) sẽ không thay đổi quá nhiều. (chẳng hạn chọn γ = 1). Nhưng khi pt = 0.9, khi đó hệ số của hàm log này gần như bằng 0, model sẽ ít quan tâm hơn tới việc twist tham số theo mẫu này.
+Ví dụ: khi pt của 1 mẫu đang train thuộc lớp t là nhỏ, FL(pt) sẽ không thay đổi quá nhiều. (chẳng hạn chọn γ = 1). Nhưng khi pt = 0.9, khi đó hệ số của hàm log này gần như bằng 0, model sẽ ít quan tâm hơn tới việc twist tham số theo mẫu này. Cụ thể theo như bài báo trình bày, khi ta chọn γ=2, một mẫu khi qua model cho xác suất pt=0.9 sẽ có giá trị loss nhỏ hơn 100X so với việc sử dụng C-E, trong khi nếu pt=0.968, giá trị này sẽ gỉam đi 1000X so với dùng CE loss.
 
 Theo như bài báo gốc trình bày về hàm loss này, ý nghĩa của hàm loss này không chỉ để giải quyết vấn đề giữa dominate class và minor class do imbalanced mà còn tập trung vào các đối tượng là "hard case" bằng cách giảm hệ số của "easy case". Khi mẫu đã có pt cao, ta ít quan tâm hơn tới feature ở mẫu này để tập trung twist tham số theo những mẫu khó nhận biết.
+
+### Hàm loss này giúp giải quyết bài toán one-stage object-detection như thế nào?
+... To be continued 
 
 **Tham khảo**: \\
 [1] [Classification Accuracy is Not Enough: More Performance Measures You Can Use](https://machinelearningmastery.com/classification-accuracy-is-not-enough-more-performance-measures-you-can-use/)\\
