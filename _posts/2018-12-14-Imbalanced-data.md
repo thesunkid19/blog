@@ -17,7 +17,7 @@ Chẳng hạn ta muốn trainning 1 model classifer hình ảnh cho xe ô tô t�
 ### Sử dụng metric phù hợp
 Việc dựa vào Accuracy của quá trình trainning để đánh giá mức độ chính xác của thuật toán trong trường hợp này là không phù hợp. F1-score, mặc dù không phải là một metric sử dụng để optimize (có thể dùng soft F1-score), nhưng là một metric tốt dùng cho việc đánh giá model trong trường hợp này, đặc biệt là Macro-F1 (thang F1 trung bình cộng tất cả F1 của nhiều class trong bài toán multiclass). 
 
-![](%5BDeep%20learning%5D%20Xu%CC%9B%CC%89%20ly%CC%81%20va%CC%82%CC%81n%20%C4%91e%CC%82%CC%80%20du%CC%9B%CC%83%20lie%CC%A3%CC%82u%20hi%CC%80nh%20a%CC%89nh%20bi%CC%A3%20che%CC%82nh%20le%CC%A3%CC%82ch%20ve%CC%82%CC%80%20so%CC%82%CC%81%20lu%CC%9Bo%CC%9B%CC%A3ng%20giu%CC%9B%CC%83a%20ca%CC%81c%20class/2E1BA316-969A-4269-B404-CBB7F9D6D6E7.png)
+![](https://raw.githubusercontent.com/thesunkid19/blog/gh-pages/img/Precisionrecall.svg.png)
 
 Ngoài ra còn một số metric khác phù hợp cho bài toán này [1](https://machinelearningmastery.com/classification-accuracy-is-not-enough-more-performance-measures-you-can-use/)
 
@@ -26,7 +26,7 @@ Bằng cách duplicate nhiều lần dữ liệu hình ảnh của class có s�
 Tuy nhiên, cần thận trọng trong số lần duplicate mẫu, vì bản chất model CNN sau khi trainning sẽ giữ lại các invariant features nhận được từ data trainning, việc 1 bức ảnh xuất hiện quá nhiều lần sẽ khiến model bị overfitting với các feature ở bức ảnh đó. Có thể thấy như trong giải pháp của đội tham gia Zalo AI trên, tỷ lệ upsampling data được tune khá là công phu. 
 
 Ngoài ra, ta còn có thể oversampling bằng cách augmentation data cho các lớp có số lượng mẫu ít, trong khi không apply điều này cho các lớp còn lại.
-![](%5BDeep%20learning%5D%20Xu%CC%9B%CC%89%20ly%CC%81%20va%CC%82%CC%81n%20%C4%91e%CC%82%CC%80%20du%CC%9B%CC%83%20lie%CC%A3%CC%82u%20hi%CC%80nh%20a%CC%89nh%20bi%CC%A3%20che%CC%82nh%20le%CC%A3%CC%82ch%20ve%CC%82%CC%80%20so%CC%82%CC%81%20lu%CC%9Bo%CC%9B%CC%A3ng%20giu%CC%9B%CC%83a%20ca%CC%81c%20class/C798A399-92BE-4582-98CD-82B99AA8559B.png)
+![](https://raw.githubusercontent.com/thesunkid19/blog/gh-pages/img/oversampling.png)
 
 ### Undersampling data
 Tương tự như ý tưởng oversampling, phương pháp undersampling chỉ thực hiện ở giai đoạn preprocessing. Thay vì duplicate các mẫu ở lớp yếu, ta loại bỏ đi bớt mẫu ở các lớp có nhiều mẫu đi để có được một bộ data cân bằng.
