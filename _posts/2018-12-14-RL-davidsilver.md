@@ -17,7 +17,7 @@ State:
 - **Partially Observable Environments**: Se ≠ Sa, using MOMDP  
 
 ## RL Agent Taxonomy
-
+![](https://raw.githubusercontent.com/thesunkid19/blog/gh-pages/img/RLagenttaxonomy.jpg)
 # Lecture 2: Markov Decision Processes
 **Markov process** is a tuple <S,Pi>  
 - S is a set of (finite) states  
