@@ -5,6 +5,8 @@ date: 2018-12-14
 categories: blog
 tags: [RL,ML]
 ---
+**Make a quick note for the video lecture**
+
 # Lecture 1: Introduction to Reinforcement Learning
 RL using the reward assumption. It states that:
 - **Reward hypothesis**: Every goal can be achieved by achieving a sequence of reward signal (expected cumulative reward)  
@@ -13,21 +15,21 @@ RL using the reward assumption. It states that:
 *"The future is independent to the pass given the present"*
 
 State:  
-- **Fully Observable Environments**: When Se = Sa , Using MDP  
-- **Partially Observable Environments**: Se ≠ Sa, using MOMDP  
+- **Fully Observable Environments**: When $Se = Sa$ , Using MDP  
+- **Partially Observable Environments**: $Se ≠ Sa$, using MOMDP  
 
 ## RL Agent Taxonomy
 ![](https://raw.githubusercontent.com/thesunkid19/blog/gh-pages/img/RLagenttaxonomy.jpg)
 # Lecture 2: Markov Decision Processes
-**Markov process** is a tuple <S,Pi>  
-- S is a set of (finite) states  
-- P is a state transition probability matrix add (Reward, discount value)  
+**Markov process** is a tuple $<S,Pi>$  
+- $S$ is a set of (finite) states  
+- $P$ is a state transition probability matrix add (Reward, discount value)  
 
-**Markov Reward Process** is a tuple <S,P, R, γi>  = *Markov process* + reward information (R, γi)
-- Rs = reward function (not just a scalar), $$ Rs = E[Rt+1 / St = s] $$,  because Rt+1 is a probability distribution.
-- Return Gt is the sum of all reward from time-step t to the end of the enviroment (terminal state), usually with weight decay γ $$ Gt = E[Rt+1+γ*Rt+2+.../ St = s] $$
+**Markov Reward Process** is a tuple $<S,P, R, γi>$  = *Markov process* + reward information $(R, γi)$
+- $Rs$ = reward function (not just a scalar), $$ Rs = E[Rt+1 / St = s] $$,  because Rt+1 is a probability distribution.
+- Return $Gt$ is the sum of all reward from time-step t to the end of the enviroment (terminal state), usually with weight decay γ $$ Gt = E[Rt+1+γ*Rt+2+.../ St = s] $$
 
-**Markov Decision Process** is a tuple M = <S, A,P, R, γi> and a policy π  
+**Markov Decision Process** is a tuple $M = <S, A,P, R, γi>$ and a policy π  
 - In this model, policy π is added for the choice of actions.
 
 # Lecture 3: Planning by Dynamic programming.
@@ -67,7 +69,7 @@ $V \left( S _ { t } \right) \leftarrow V \left( S _ { t } \right) + \alpha \left
 - Both TD & MC sample pi while MDP doesn't
 ## TD(λ)
 - TD(λ) generalizes TD for n-step return. Its spectrum is between TD and MC.
-- Term λ is made for weighed return 
+- Term λ is made for weighed return \\
 $G _ { t } ^ { \lambda } = ( 1 - \lambda ) \sum _ { k = 1 } ^ { \infty } \lambda ^ { k - 1 } G _ { t } ^ { ( k ) }$ 
 $G _ { t } ^ { ( n ) } = R _ { t + 1 } + \gamma R _ { t + 2 } + \ldots + \gamma ^ { n } V \left( S _ { t + n } \right)$
 

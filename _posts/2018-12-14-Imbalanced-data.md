@@ -44,7 +44,7 @@ Giải sử trong bài toán này, ta chọn α0 = 0.25 (lớp không vật cả
 Nhìn về mặt giá trị hàm loss, việc áp đặt thêm hệ số này khá giống với việc upsampling, bằng cách ta duplicate thêm mẫu cho lớp yếu thì cũng tương tự như việc tăng hệ số loss của lớp này, tuy nhiên khi train theo mini-batch thì tác động của 2 phương pháp này là khác nhau.
 
 ### Focal loss
-Đây là hàm loss được sử dụng trong mạng object-detection RetinaNet của Facebook [[3]](https://arxiv.org/abs/1708.02002). Hàm loss này giúp giải quyết vấn đề là điểm yếu của các thuật toán object-detection 1-stage, giúp tăng độ chính xác của những mô hình mang sẵn trong mình ưu thế là thời gian inference rất nhanh. Trước tiên hãy cùng tìm hiểu xem hàm loss này hoạt động như thế nào.
+Đây là hàm loss được sử dụng trong mạng object-detection RetinaNet của Facebook [[3]](https://arxiv.org/abs/1708.02002). Hàm loss này giúp giải quyết một vấn đề quan trọng vốn là điểm yếu của các thuật toán object-detection 1-stage, giúp tăng độ chính xác của những mô hình mang sẵn trong mình ưu thế là thời gian inference rất nhanh. Trước tiên hãy cùng tìm hiểu xem hàm loss này hoạt động như thế nào.
 
 Focal loss thực tế cũng là một làm loss tinh chỉnh từ C-E, với hyperparameter mới là γ gọi là tham số tập trung (focusing parameter):
 
