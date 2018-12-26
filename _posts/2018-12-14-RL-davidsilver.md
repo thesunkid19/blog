@@ -48,7 +48,7 @@ synchronous update iteration.
 - Value Iteration -> using BEE and "optimal v(s) -> optimal v(s') with s' is precessor of s"
 
 # Lecture 4: Model-free prediction
-In the unknown MDP enviroment, we must use different evaluation schema &  control schema. 
+In the unknown MDP enviroment, we must use different evaluation schema &  control schema. \\
 ## Monte Carlo
 - Record the value of each path under the policy, then average them to estimate the value function of each state. 
 - The trick is that we don't need to carry all the record by using **incremental mean** to update value function each step, and throw it after: 
@@ -58,7 +58,7 @@ $V \left( S _ { t } \right) \leftarrow V \left( S _ { t } \right) + \alpha \left
 with  $ \alpha = \frac { 1 } { N \left( S _ { t } \right) }$
 
 - MC waits for the end of episode to determine the change (increase) of V(t)
-- Notes: MC only works on the terminating enviroment & complete squences
+- Notes: MC only works on the terminating enviroment & complete squences \\
 ## Temporal-difference learning (TD)
 - TD exploit the Markov env & using Bellman equation by estimate V(St) in MC by V(St+1) + γRt+1 
 $V \left( S _ { t } \right) \leftarrow V \left( S _ { t } \right) + \alpha \left( R _ { t + 1 } + \gamma V \left( S _ { t + 1 } \right) - V \left( S _ { t } \right) \right)$
