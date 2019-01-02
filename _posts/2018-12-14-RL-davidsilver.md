@@ -73,6 +73,32 @@ $V \left( S _ { t } \right) \leftarrow V \left( S _ { t } \right) + \alpha \left
 $G _ { t } ^ { \lambda } = ( 1 - \lambda ) \sum _ { k = 1 } ^ { \infty } \lambda ^ { k - 1 } G _ { t } ^ { ( k ) }$ 
 $G _ { t } ^ { ( n ) } = R _ { t + 1 } + \gamma R _ { t + 2 } + \ldots + \gamma ^ { n } V \left( S _ { t + n } \right)$
 
+# Lecture 5: Model-Free Control
+## On-policy leanrning
+Using MC method can make agent get stuck on Greedy action selection by don't limit the exploration of other solution with lower initial value.
+
+Propose a simple idea to solve this: Take an $\epsilon$ probability to take action randomly and otherwise take the greedy action in $1 - \epsilon$  probability, so then: 
+$\pi ( a | s ) = \left\{ \begin{array} { l l } { \epsilon / m + 1 - \epsilon } & { \text { if } a ^ { * } = \underset { a \in \mathcal { A } } { \operatorname { argmax } } Q ( s , a ) } \\ { \epsilon / m } & { \text { otherwise } } \end{array} \right.$
+
+ It's $\epsilon -greedy$ policy improvement
+
+GLIE Monte-Carlo method help building a model that still act $\epsilon -greedy$ but also solve the problem of converge state when we've found optimal action-value func by using:
+1/ Updating by every episode
+2/ Limit with Infinite Exploration (that set $\epsilon = 1/k$ that converge to 0 at the end )
+
+The different between MC control & TD control is MC using every episode update trick & TD using every time-step update trick (what is the different??). TD control using SARSA policy evaluation.
+
+The sharing concept of 2 algorithm is (like $TD(\lambda)$) SARSA n-step. The Eligibility trace using in SARSA($\lambda$) is a kind of dimunitival sum by time that focus more on the very last step of the end of episode than the first one.
+
+## Off-policy learning
+Learn from observing humans or other agents (imitate learning), used for exploratory policy purpose to learn optimal policy.
+
+We can you the idea Importance Sampling ($$\mathbb { E } _ { X \sim P } [ f ( X ) ] = \sum P ( X ) f ( X ) = \mathbb { E } _ { X \sim Q } \left[ \frac { P ( X ) } { Q ( X ) } f ( X ) \right]$$) to apply to Off-policy by using a target generated from a policy $\mu$ to evaluate $\pi$. But it seems not work well with MC because of the long tail of step cause the ... something (high variance ??) 
+
+**Q-learning** is a off-policy control method that no require importance sampling to find the optimal action-value function. It looks like BOE but using sampling technique. Not fully understand it yet.
+
+Here is the summary all algorithm in DP vs TD.
+![](https://raw.githubusercontent.com/thesunkid19/blog/gh-pages/img/DPvsTD.png)
 
  
 **ζ**
