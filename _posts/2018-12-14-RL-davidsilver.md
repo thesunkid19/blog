@@ -75,7 +75,7 @@ $G _ { t } ^ { ( n ) } = R _ { t + 1 } + \gamma R _ { t + 2 } + \ldots + \gamma 
 
 # Lecture 5: Model-Free Control
 ## On-policy leanrning
-Using MC method can make agent get stuck on Greedy action selection by don't limit the exploration of other solution with lower initial value.
+Using MC method can make agent get stuck on Greedy action selection by restricting the exploration another solution with lower initial value.
 
 Propose a simple idea to solve this: Take an $\epsilon$ probability to take action randomly and otherwise take the greedy action in $1 - \epsilon$  probability, so then: 
 $\pi ( a | s ) = \left\{ \begin{array} { l l } { \epsilon / m + 1 - \epsilon } & { \text { if } a ^ { * } = \underset { a \in \mathcal { A } } { \operatorname { argmax } } Q ( s , a ) } \\ { \epsilon / m } & { \text { otherwise } } \end{array} \right.$
