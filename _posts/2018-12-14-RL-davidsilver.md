@@ -80,9 +80,9 @@ Using MC method can make agent get stuck on Greedy action selection by restricti
 Propose a simple idea to solve this: Take an $\epsilon$ probability to take action randomly and otherwise take the greedy action in $1 - \epsilon$  probability, so then: 
 $\pi ( a | s ) = \left\{ \begin{array} { l l } { \epsilon / m + 1 - \epsilon } & { \text { if } a ^ { * } = \underset { a \in \mathcal { A } } { \operatorname { argmax } } Q ( s , a ) } \\ { \epsilon / m } & { \text { otherwise } } \end{array} \right.$
 
- It's $\epsilon -greedy$ policy improvement
+ It's **$\epsilon -greedy$ policy improvement**
 
-GLIE Monte-Carlo method help building a model that still act $\epsilon -greedy$ but also solve the problem of converge state when we've found optimal action-value func by using:
+**GLIE Monte-Carlo** method help building a model that still act $\epsilon -greedy$ but also solve the problem of converge state when we've found optimal action-value func by using:
 1/ Updating by every episode
 2/ Limit with Infinite Exploration (that set $\epsilon = 1/k$ that converge to 0 at the end )
 
