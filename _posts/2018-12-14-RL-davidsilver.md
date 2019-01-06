@@ -74,21 +74,21 @@ $G _ { t } ^ { \lambda } = ( 1 - \lambda ) \sum _ { k = 1 } ^ { \infty } \lambda
 $G _ { t } ^ { ( n ) } = R _ { t + 1 } + \gamma R _ { t + 2 } + \ldots + \gamma ^ { n } V \left( S _ { t + n } \right)$
 
 # Lecture 5: Model-Free Control
-## On-policy leanrning
-Using MC method can make agent get stuck on Greedy action selection by restricting the exploration another solution with lower initial value.
+## On-policy learning
+Using MC method can make agent get stuck on Greedy action selection by restricting from exploring another solution with lower initial value.
 
-Propose a simple idea to solve this: Take an $\epsilon$ probability to take action randomly and otherwise take the greedy action in $1 - \epsilon$  probability, so then: 
+A simple idea is proposed to solve this: Take an $\epsilon$ probability to take action randomly and otherwise take the greedy action in $1 - \epsilon$  probability, so then we have a distribution:
 $$\pi ( a | s ) = \left\{ \begin{array} { l l } { \epsilon / m + 1 - \epsilon } & { \text { if } a ^ { * } = \underset { a \in \mathcal { A } } { \operatorname { argmax } } Q ( s , a ) } \\ { \epsilon / m } & { \text { otherwise } } \end{array} \right.$$
 
- It's **$\epsilon -greedy$ policy improvement**
+ It's  **$\epsilon -greedy$ policy improvement**
 
-**GLIE Monte-Carlo** method help building a model that still act $\epsilon -greedy$ but also solve the problem of converge state when we've found optimal action-value func by using:
+**(Greedy in the Limit with Infinite Exploration) GLIE Monte-Carlo** method help building a model that still act $\epsilon -greedy$ but also solve the problem of converge stage when we've found optimal action-value func and don't want to act $\epsilon -greedy$, by using:
 1/ Updating by every episode
-2/ Limit with Infinite Exploration (that set $\epsilon = 1/k$ that converge to 0 at the end )
+2/ Limit with Infinite Exploration (set $\epsilon = 1/k$ then it'll converge to 0 at the end)
 
-The different between MC control & TD control is MC using every episode update trick & TD using every time-step update trick (what is the different??). TD control using SARSA policy evaluation.
+The different between MC control & TD control is MC uses `every episode` update scheme while TD uses `every time-step` update scheme (what is the different??). TD control using SARSA policy evaluation.
 
-The sharing concept of 2 algorithm is (like $TD(\lambda)$) SARSA n-step. The Eligibility trace using in SARSA($\lambda$) is a kind of dimunitival sum by time that focus more on the very last step of the end of episode than the first one.
+The sharing concept of 2 algorithm is (like $TD(\lambda)$) SARSA n-step. The Eligibility trace using in SARSA($\lambda$) is a kind of dimunitival sum by time that focus more on the latter time-step of an episode than the first one.
 
 ## Off-policy learning
 Learn from observing humans or other agents (imitate learning), used for exploratory policy purpose to learn optimal policy.
