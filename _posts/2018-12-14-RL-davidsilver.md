@@ -88,12 +88,12 @@ $$\pi ( a | s ) = \left\{ \begin{array} { l l } { \epsilon / m + 1 - \epsilon } 
 
 The different between MC control & TD control is MC uses `every episode` update scheme while TD uses `every time-step` update scheme (what is the different??). TD control using SARSA policy evaluation.
 
-The sharing concept of 2 algorithm is (like $TD(\lambda)$) SARSA n-step. The Eligibility trace using in SARSA($\lambda$) is a kind of dimunitival sum by time that focus more on the latter time-step of an episode than the first one.
+The sharing concept of 2 algorithm is (like $TD(\lambda)$) SARSA n-step. The Eligibility trace using in SARSA($\lambda$) is a kind of dimunitival sum by time that focus more on the latter time-step of anepisode than the first one.
 
 ## Off-policy learning
-Learn from observing humans or other agents (imitate learning), used for exploratory policy purpose to learn optimal policy.
+This strategy is often used for learning from observing humans or other agents (imitate learning), or exploring policy purpose to learn final optimal policy.
 
-We can you the idea Importance Sampling ($$\mathbb { E } _ { X \sim P } [ f ( X ) ] = \sum P ( X ) f ( X ) = \mathbb { E } _ { X \sim Q } \left[ \frac { P ( X ) } { Q ( X ) } f ( X ) \right]$$) to apply to Off-policy by using a target generated from a policy $\mu$ to evaluate $\pi$. But it seems not work well with MC because of the long tail of step cause the ... something (high variance ??) 
+Use the idea Importance Sampling ($$\mathbb { E } _ { X \sim P } [ f ( X ) ] = \sum P ( X ) f ( X ) = \mathbb { E } _ { X \sim Q } \left[ \frac { P ( X ) } { Q ( X ) } f ( X ) \right]$$) to apply to Off-policy by using a target generated from a policy $\mu$ to evaluate $\pi$. But it seems not work well with MC because of the long tail of step cause the ... something (high variance ??) 
 
 **Q-learning** is a off-policy control method that no require importance sampling to find the optimal action-value function. It looks like BOE but using sampling technique. Not fully understand it yet.
 
