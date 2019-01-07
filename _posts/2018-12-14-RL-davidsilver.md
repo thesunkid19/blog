@@ -110,11 +110,11 @@ RL is known as an generalized method to solve large problems. The strategy it us
 
 
 
-Question:
+**Question:**
 - why SGD always converge on global optimum? 
 - And oh wow, why look up table is a special case of value function approximate?
 
-The idea of linear combination state feature vector is strangeforward, we train a parametetric model that has linear combination of feature vector with weight represent states. So from that view, we can easily construct an state representation lookup table by using an one-hot vector represent to state we want to talk about, and weight represent to the value of corresponding state.
+The idea of linear combination state feature vector is straightforward, we train a parametric model that has linear combination of feature vector with weight represent states. So from that view, we can easily construct an state representation lookup table by using an one-hot vector represent to state we want to talk about, and weight represent to the value of corresponding state.
 
 We use GD to minimize the gap between our approximator and the real value function (`oracle`).
 
@@ -131,7 +131,7 @@ In prediction, TD or TD($\lambda$) don't work in some situation. So gradient TD 
 
 Q-learning using second network parameter to stably update the primary parameter. The dangerous of TD learning is everytime we update Q-value you also update Q-target.
 
-Experience replay helps randomizes over the data, therefore help removing correlation in the observation sequences, or convert sequence date to i.i.d data. In the least square policy iteration, we use experienment replay to update parameter for stably updating. To use experience replay in batch method, we need to store transitions/ experiences $e _ { t } = \left( s _ { t } , a _ { t } , r _ { t } , s _ { t + 1 } \right)$.
+Experience replay helps randomizes over the data, therefore help removing correlation in the observation sequences, or convert sequence date to i.i.d data. In the least square policy iteration, we use experienment replay to update parameter for stably updating. To use experience replay in batch method, we need to store transitions/ experiences $e _ { t } = \left( s _ { t } , a _ { t } , r _ { t } , s _ { t + 1 } \right)$ in a `replay buffer`.
 
 **ζ**
 
