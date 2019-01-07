@@ -93,14 +93,46 @@ The sharing concept of 2 algorithm is (like $TD(\lambda)$) SARSA n-step. The Eli
 ## Off-policy learning
 This strategy is often used for learning from observing humans or other agents (imitate learning), or exploring policy purpose to learn final optimal policy.
 
-Use the idea Importance Sampling ($$\mathbb { E } _ { X \sim P } [ f ( X ) ] = \sum P ( X ) f ( X ) = \mathbb { E } _ { X \sim Q } \left[ \frac { P ( X ) } { Q ( X ) } f ( X ) \right]$$) to apply to Off-policy by using a target generated from a policy $\mu$ to evaluate $\pi$. But it seems not work well with MC because of the long tail of step cause the ... something (high variance ??) 
+We can use the idea Importance Sampling ($$\mathbb { E } _ { X \sim P } [ f ( X ) ] = \sum P ( X ) f ( X ) = \mathbb { E } _ { X \sim Q } \left[ \frac { P ( X ) } { Q ( X ) } f ( X ) \right]$$) to apply to Off-policy by using a target generated from a policy $\mu$ to evaluate $\pi$. But it seems not work well with MC because of the long tail of step cause the ... something (high variance ??) 
 
 **Q-learning** is a off-policy control method that no require importance sampling to find the optimal action-value function. It looks like BOE but using sampling technique. Not fully understand it yet.
 
 Here is the summary all algorithm in DP vs TD.
 ![](https://raw.githubusercontent.com/thesunkid19/blog/gh-pages/img/DPvsTD.png)
 
- 
+Notes: On-policy & off-policy is quite hard to fully understand from Silver lecture, I just find a clear explanation about these terms in [this topic](https://www.quora.com/What-is-a-simple-iterative-example-of-how-on-policy-and-off-policy-algorithms-differ-in-reinforcement-learning-I-really-need-to-see-it-working-for-at-least-3-steps). That said, in RL, there are 2 terms that rarely is mentioned explicitly is "learning policy and behaviour policy: the former is which values you are trying to learn about and the latter is the policy that you follow to choose actions and get samples from".
+
+- In on-policy: learning and behaviour policies are identical.
+- In off-policy (Q-learning): the learning policy is greedy policy and the behaviour policy is something like $\epsilon$ greedy policy.
+
+# Lecture 6: Model-Free Control
+RL is known as an generalized method to solve large problems. The strategy it use is not just storage information/a lookup table but efficient strategies to representing and learning to build value function approximation.
+
+
+
+Question:
+- why SGD always converge on global optimum? 
+- And oh wow, why look up table is a special case of value function approximate?
+
+The idea of linear combination state feature vector is strangeforward, we train a parametetric model that has linear combination of feature vector with weight represent states. So from that view, we can easily construct an state representation lookup table by using an one-hot vector represent to state we want to talk about, and weight represent to the value of corresponding state.
+
+We use GD to minimize the gap between our approximator and the real value function (`oracle`).
+
+- But the big problem is, how we can take the ground-true value func (because it's not like supervised learning that we can directly assign one)? 
+
+From the previous lecture, we know that we can substitute a target for $v\pi(S)$, using MC, TD and TD($\lambda$). By that, we can create an supervised training dataset to train agent.
+
+- Why MC converges to local optimum while TD(0) converge (close) to global minimum?
+
+When we get the an approximation value function, we just act greedy to the function and update it. It turns out not converge to optimal policy but just approximate optimal policy. This idea used for both State-value function approximation $v_{\pi}(S)$ and Action-value function approximation $Q_{\pi}(S,A)$
+
+Using bootstap $\lambda$ usually help, the question is what hypyerparameter is good. 
+In prediction, TD or TD($\lambda$) don't work in some situation. So gradient TD fixes that.
+
+Q-learning using second network parameter to stably update the primary parameter. The dangerous of TD learning is everytime we update Q-value you also update Q-target.
+
+Experience replay helps randomizes over the data, therefore help removing correlation in the observation sequences, or convert sequence date to i.i.d data. In the least square policy iteration, we use experienment replay to update parameter for stably updating. To use experience replay in batch method, we need to store transitions/ experiences $e _ { t } = \left( s _ { t } , a _ { t } , r _ { t } , s _ { t + 1 } \right)$.
+
 **ζ**
 
 
