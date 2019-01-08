@@ -146,7 +146,7 @@ Score function take the form of how much unsual am i doing something. Using scor
 
 **Policy gradient** is a method that generalise likelihood ratio ($∇θJ(θ)$) approach to multi-step MDPs. $\nabla _ { \theta } J ( \theta ) = \mathbb { E } _ { \pi \theta } \left[ \nabla _ { \theta } \log \pi _ { \theta } ( s , a ) Q ^ { \pi _ { \theta } } ( s , a ) \right]$
 
-**MC Policy gradient** is a policy gradient method that sampling $Q ^ { \pi _ { \theta } } ( s , a ) \right]$ by a return. This method behave varient and slow to converge.
+**Monte-Carlo Policy gradient** is a policy gradient method that sampling $$Q ^ { \pi _ { \theta } } ( s , a ) $$ by a return. This method behave varient and slow to converge.
 
 **Actor-critic**: actor - the parametric approximator that pick action; critic - the parametric approximator that evaluate picked action. We can see critic as a leader and actor as a man follower
 - **Reducing Variance Using a Baseline**: A Baseline $B(S)$ helps A-C reduce variance by substracting $B(s)$ from policy gradient, it doesn' change the direction of gradient, we can choose $B(s)=V_{\pi}(S)$ in the sense that "how much better than usual". $\nabla _ { \theta } J ( \theta ) = \mathbb { E } _ { \pi \theta } \left[ \nabla _ { \theta } \log \pi _ { \theta } ( s , a ) A ^ { \pi _ { \theta } } ( s , a ) \right]$. It arises new task for critic which is estimate $V_{\pi}(S)$ to caculate Advantage func: $A ( s , a ) = Q _ { w } ( s , a ) - V _ { v } ( s )$
