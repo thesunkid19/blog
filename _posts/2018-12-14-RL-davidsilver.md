@@ -154,6 +154,9 @@ Score function take the form of how much unsual am i doing something. Using scor
 
 Summary: to estimate policy gradient, we take the score function multiply by value function/ return/ TD($\lambda$/ TD(0)/ baseline function, ...
 
+# Lecture 8: Integrating Learning and Planning
+
+
 **ζ**
 
 
