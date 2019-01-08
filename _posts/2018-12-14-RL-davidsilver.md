@@ -106,9 +106,8 @@ Notes: On-policy & off-policy is quite hard to fully understand from Silver lect
 - In off-policy (Q-learning): the learning policy is greedy policy and the behaviour policy is something like $\epsilon$ greedy policy.
 
 # Lecture 6: Model-Free Control
-RL is known as an generalized method to solve large problems. The strategy it use is not just storage information/a lookup table but efficient strategies to representing and learning to build value function approximation.
 
-
+RL is known as an generalized method to solve large problems. The strategy to build value function approximation it uses is not just storage information/a lookup table but efficient strategies to representing and learning state.
 
 **Question:**
 - why SGD always converge on global optimum? 
@@ -132,6 +131,28 @@ In prediction, TD or TD($\lambda$) don't work in some situation. So gradient TD 
 Q-learning using second network parameter to stably update the primary parameter. The dangerous of TD learning is everytime we update Q-value you also update Q-target.
 
 Experience replay helps randomizes over the data, therefore help removing correlation in the observation sequences, or convert sequence date to i.i.d data. In the least square policy iteration, we use experienment replay to update parameter for stably updating. To use experience replay in batch method, we need to store transitions/ experiences $e _ { t } = \left( s _ { t } , a _ { t } , r _ { t } , s _ { t + 1 } \right)$ in a `replay buffer`.
+
+Hint: Interestingly, exprerience replay is the secret sauce that is (borrowed from Hassabis' area of the brain)[https://www.technologyreview.com/s/532876/googles-intelligence-designer/] that helps RL works. “When you go to sleep your hippocampus replays the memory of the day back to your cortex.”
+
+# Lecture 7: Policy Gradient Method 
+
+In the lecture 6, we use an approximator to learn value functions ($V(S)$&$Q(S,A)$), from these, we infer the policy. In this lecture, we will directly parameterize the policy by a distribution. Using value function approximation (value-based) perform poorly in partially observable enviroment or state aliasing (in that, different states that appear similar but require different responses so that we cannot infer just a deterministic policy).
+
+**Optimising policy using object function J**: We define a objection function and base on some search methods (like GD, evolution search,...) to find $\theta$ that achieve optimal policy $\pi(\theta)$.
+
+**To caculate the gradient of J**: finite differences or using Score function.
+
+Score function take the form of how much unsual am i doing something. Using score function trick, we easily increase our objection func (reward) by just moving in the direction dertermined by the score_func*reward (where has positive reward, we move in the direction that get more that thing,or vice versa)
+
+**Policy gradient** is a method that generalise likelihood ratio ($∇θJ(θ)$) approach to multi-step MDPs. $\nabla _ { \theta } J ( \theta ) = \mathbb { E } _ { \pi \theta } \left[ \nabla _ { \theta } \log \pi _ { \theta } ( s , a ) Q ^ { \pi _ { \theta } } ( s , a ) \right]$
+
+**MC Policy gradient** is a policy gradient method that sampling $Q ^ { \pi _ { \theta } } ( s , a ) \right]$ by a return. This method behave varient and slow to converge.
+
+**Actor-critic**: actor - the parametric approximator that pick action; critic - the parametric approximator that evaluate picked action. We can see critic as a leader and actor as a man follower
+- **Reducing Variance Using a Baseline**: A Baseline $B(S)$ helps A-C reduce variance by substracting $B(s)$ from policy gradient, it doesn' change the direction of gradient, we can choose $B(s)=V_{\pi}(S)$ in the sense that "how much better than usual". $\nabla _ { \theta } J ( \theta ) = \mathbb { E } _ { \pi \theta } \left[ \nabla _ { \theta } \log \pi _ { \theta } ( s , a ) A ^ { \pi _ { \theta } } ( s , a ) \right]$. It arises new task for critic which is estimate $V_{\pi}(S)$ to caculate Advantage func: $A ( s , a ) = Q _ { w } ( s , a ) - V _ { v } ( s )$
+- This lecture also introduce **Natural Poclicy Gradient**, **Natural Policy Gradient**.
+
+Summary: to estimate policy gradient, we take the score function multiply by value function/ return/ TD($\lambda$/ TD(0)/ baseline function, ...
 
 **ζ**
 
