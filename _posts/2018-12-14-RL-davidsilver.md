@@ -136,7 +136,7 @@ Hint: Interestingly, exprerience replay is the secret sauce that is (borrowed fr
 
 # Lecture 7: Policy Gradient Method 
 
-In the lecture 6, we use an approximator to learn value functions ($V(S)$&$Q(S,A)$), from these, we infer the policy. In this lecture, we will directly parameterize the policy by a distribution. Using value function approximation (value-based) perform poorly in partially observable enviroment or state aliasing (in that, different states that appear similar but require different responses so that we cannot infer just a deterministic policy).
+In the lecture 6, we use an approximator to learn value functions ($V(S)$&$Q(S,A)$), from that we infer the policy. In this lecture, we will directly parameterize the policy by a distribution. Using value function approximation (value-based) perform poorly in partially observable enviroment or state aliasing (in that, different states that appear similar but require different responses so that we cannot infer just a deterministic policy).
 
 **Optimising policy using object function J**: We define a objection function and base on some search methods (like GD, evolution search,...) to find $\theta$ that achieve optimal policy $\pi(\theta)$.
 
