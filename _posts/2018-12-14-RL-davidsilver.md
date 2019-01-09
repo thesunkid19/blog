@@ -175,7 +175,7 @@ Dyna works better and more efficient than Q-learning.
 
 ## Simulation-Based search for planning
 - Forward search: just look ahead and focus on the best action next stage and then next and next. We don't need to solve MDP, just sub-MDP from NOW (root node).
-- Simulation-Based Search: Forward search using sample-based planning to simulate episodes of experiences $\left\{ s _ { t } ^ { k } , A _ { t } ^ { k } , R _ { t + 1 } ^ { k } , \ldots , S _ { T } ^ { k } \right\} _ { k = 1 } ^ { K } \sim \mathcal { M } _ { \nu }$ , (capital character = sampled signal). Apply different model-free RL methods give diff search method: 
+- Simulation-Based Search: Forward search using sample-based planning to simulate episodes of experiences ${ s _ { t } ^ { k } , A _ { t } ^ { k } , R _ { t + 1 } ^ { k } , \ldots , S _ { T } ^ { k }} _ { k = 1 } ^ { K } \sim \mathcal { M } _ { \nu }$ , (capital character = sampled signal). Apply different model-free RL methods give diff search method: 
 + Simple Monte-Carlo Search: (1) give a model and a simulation policy $\pi$ (2) each $a \in \mathcal { A }$: Evaluate Q_value by mean return from simulated episodes (3) Select action in next state of root with max value.
 + Monte-Carlo Tree Search: Just Monte-Carlo control applied to simulated experience. Don't just look ahead, build a tree!
 + TD Search: Using TD instead of MC, that's it!
@@ -183,7 +183,6 @@ Dyna works better and more efficient than Q-learning.
 
 Summary: Planning, simulation-based search and effective method of planning it just use a model and apply to sample tranjectories to imagine what to happend next, build the tree and combine RL method (MC,TD,...)
 
-$${ s _ { t } ^ { k } , A _ { t } ^ { k } , R _ { t + 1 } ^ { k } , \ldots , S _ { T } ^ { k } } _ { k = 1 } ^ { K } \sim \mathcal { M } _ { \nu }$$
 
 
 # Lecture 9: Exploration and Exploitation 
@@ -205,7 +204,7 @@ This lecture introduce new term:
 
 ### Upper Confidence Bounds
 
-We introduce an upper confidence $\hat { U } _ { t } ( a )$ for each action value so $Q ( a ) \leq \hat { Q } _ { t } ( a ) + \hat { U } _ { t } ( a )$ with high probability. ($\hat { U } _ { t } ( a )$ can be the varience of action value distribution)
+We introduce an upper confidence $\hat { U } _ { t } ( a )$ for each action value so $Q ( a ) \leq \hat { Q } _ { t } ( a ) + \hat { U } _ { t } ( a )$ with high probability. ($\hat { U } _ { t } ( a )$ can be the varience of action value distribution). Then act greedy (select action maximising) to UCB.
 
 
 
