@@ -185,7 +185,18 @@ Summary: Planning, simulation-based search and effective method of planning it j
 **ζ**
 
 
-	
+# Lecture 9: Exploration and Exploitation 
+
+Exploration & Exploitation is a dilemma in RL. This problem is about how to achieve longterm goal (get more information) but alse doesn't sacrifice short-term reward (just go ahead and take your coins)
+
+There are few methods to approach this problem:
+- Probability method: $\epsilon$-greedy, softmax, gaussian-noise
+- Optimism in the Face of Uncertainty: just do which state/action with the highest uncertainty.
+- Information state space: use a model to determine the helpful information in each state.
+
+This lecture introduce new term: Regret. We calculate regret by $L _ { t } = \mathbb { E } \left[ \sum _ { \tau = 1 } ^ { t } V ^ { * } - Q \left( a _ { \tau } \right) \right]$ ($V ^ { * } = Q \left( a ^ { * } \right) = \max _ { a \in \mathcal { A } } Q ( a )$ which $V^{*}$ optimal value) - opportunity loss and find a way to minimize it, cause maximize(cumulative reward) <=> minimize(total regret). We try to find a lower bound for this function by the time-steps. Which is indicated by $\epsilon-greedy$, but $\epsilon-greedy$ seems not real because we don't have the gaps $\Delta _ { a } = V^* - Q(a)$. 
+
+We can explore UCB and Thompson Sampling, it seems helpful but I don't fully understand yet.
 
 
 
