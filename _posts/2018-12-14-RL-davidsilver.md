@@ -182,6 +182,7 @@ Dyna works better and more efficient than Q-learning.
 + Monte-Carlo Tree Search: Just Monte-Carlo control applied to simulated experience. Don't just look ahead, build a tree!
 + TD Search: Using TD instead of MC, that's it!
 
+$\left\{ s _ { t } ^ { k } , A _ { t } ^ { k } , R _ { t + 1 } ^ { k } , \ldots , S _ { T } ^ { k } \right\} _ { k = 1 } ^ { K } \sim \mathcal { M } _ { \nu }$
 
 Summary: Planning, simulation-based search and effective method of planning it just use a model and apply to sample tranjectories to imagine what to happend next, build the tree and combine RL method (MC,TD,...)
 
@@ -197,7 +198,10 @@ There are few methods to approach this problem:
 - Information state space: use a model to determine the helpful information in each state.
 
 This lecture introduce new term: 
-- Regret - $L _ { t } = \mathbb { E } \left[ \sum _ { \tau = 1 } ^ { t } V ^ { * } - Q \left( a _ { \tau } \right) \right]$ ($V ^ { * } = Q \left( a ^ { * } \right) = \max _ { a \in \mathcal { A } } Q ( a )$ - optimal value - opportunity loss and find a way to minimize it, cause maximize(cumulative reward) <=> minimize(total regret). We try to find a lower bound for this function by the time-steps. Which is indicated by $\epsilon-greedy$, but $\epsilon-greedy$ seems not real because we don't have the gaps $\Delta _ { a } = V^* - Q(a)$. 
+- Total regret (regret for many steps - opportunity loss) - $L _ { t } = \mathbb { E } \left[ \sum _ { \tau = 1 } ^ { t } V ^ { * } - Q \left( a _ { \tau } \right) \right]$ which $V ^ { * } = Q \left( a ^ { * } \right) = \max _ { a \in \mathcal { A } } Q ( a )$ is the optimal value.
+- Finding way to minimize total regret <=> maximize(cumulative reward).
+- $L_{t} =\mathbb{E}\left[ \sum_{\tau=1}^{t} V^{*} - Q(a_\tau)\right] = \sum _ { a \in \mathcal { A } } \mathbb { E } \left[ N _ { t } ( a ) \right] \left( V ^ { * } - Q ( a ) \right) = \sum_{\a in \mathcal A} \mathbb { E }[N _ { t } ( a )]\Delta _ { a }$ with the gap between optimal action value and value of action $a$; $N _ { t } ( a )$ is the expected number of selections for action a.
+- We try to find a lower bound for this function by the time-steps. Which is indicated by $\epsilon$-greedy, but $\epsilon$-greedy seems not real because we don't have the gaps $\Delta _ { a } = V^* - Q(a)$. 
 
 We can explore UCB and Thompson Sampling, it seems helpful but I don't fully understand yet.
 
