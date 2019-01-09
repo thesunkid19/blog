@@ -5,7 +5,10 @@ date: 2018-12-14
 categories: blog
 tags: [RL,ML]
 ---
-**Make a quick note for the video lecture**
+**Warning: This is a rant post containing a bunch of unorganized thoughts yet. This will be used as a resource for more structured posts later**
+
+> “If people do not believe that mathematics is simple, it is only because they do not realize how complicated life is.” — John von Neumann
+This course shows me a lot about how complicated the world is.
 
 # Lecture 1: Introduction to Reinforcement Learning
 RL using the reward assumption. It states that:
@@ -132,7 +135,7 @@ Q-learning using second network parameter to stably update the primary parameter
 
 Experience replay helps randomizes over the data, therefore help removing correlation in the observation sequences, or convert sequence date to i.i.d data. In the least square policy iteration, we use experienment replay to update parameter for stably updating. To use experience replay in batch method, we need to store transitions/ experiences $e _ { t } = \left( s _ { t } , a _ { t } , r _ { t } , s _ { t + 1 } \right)$ in a `replay buffer`.
 
-Hint: Interestingly, exprerience replay is the secret sauce that is (borrowed from Hassabis' area of the brain)[https://www.technologyreview.com/s/532876/googles-intelligence-designer/] that helps RL works. “When you go to sleep your hippocampus replays the memory of the day back to your cortex.”
+Hint: Interestingly, exprerience replay is the secret sauce that is [borrowed from Hassabis' area of the brain](https://www.technologyreview.com/s/532876/googles-intelligence-designer/) that helps RL works. “When you go to sleep your hippocampus replays the memory of the day back to your cortex.”
 
 # Lecture 7: Policy Gradient Method 
 
@@ -156,7 +159,29 @@ Summary: to estimate policy gradient, we take the score function multiply by val
 
 # Lecture 8: Integrating Learning and Planning
 
+This lecture cover model-based section, learning to model the world and plan in its MDP.
 
+A model is parameterised by a tuple $< \mathrm { P } { \mathrm { I } } , \mathrm { R } { \eta } >$ - state of transition and reward. We infer the model just by counting or averaging the occurences ($<s_t+1,a_t+1>$) for all visit from each pair $<s_t,a_t>$. 
+
+## Sample-based planning: 
+A model is just used only for generating sampling (Simulated experience). After learning model, agent sampling S and R from its model and apply model-free RL method . (Learn about the world -> sample from our knowledge -> solve by model-free RL)>
+
+## Dyna: 
+Combine both learning from real experiences & planning from simulated experiences
+
+Here is the Dyna algorithm:
+![](https://raw.githubusercontent.com/thesunkid19/blog/gh-pages/img/dyna.png)
+Dyna works better and more efficient than Q-learning.
+
+## Simulation-Based search for planning
+- Forward search: just look ahead and focus on the best action next stage and then next and next. We don't need to solve MDP, just sub-MDP from NOW (root node).
+- Simulation-Based Search: Forward search using sample-based planning to simulate episodes of experiences $\left\{ s _ { t } ^ { k } , A _ { t } ^ { k } , R _ { t + 1 } ^ { k } , \ldots , S _ { T } ^ { k } \right\} _ { k = 1 } ^ { K } \sim \mathcal { M } _ { \nu }$, (capital character = sampled signal). Apply different model-free RL methods give diff search method: 
++ Simple Monte-Carlo Search: (1) give a model and a simulation policy $\pi$ (2) each $a \in \mathcal { A }$: Evaluate Q_value by mean return from simulated episodes (3) Select action in next state of root with max value.
++ Monte-Carlo Tree Search: Just Monte-Carlo control applied to simulated experience. Don't just look ahead, build a tree!
++ TD Search: Using TD instead of MC, that's it!
+
+
+Summary: Planning, simulation-based search and effective method of planning it just use a model and apply to sample tranjectories to imagine what to happend next, build the tree and combine RL method (MC,TD,...)
 **ζ**
 
 
@@ -165,5 +190,5 @@ Summary: to estimate policy gradient, we take the score function multiply by val
 
 
  
-
+  
 
