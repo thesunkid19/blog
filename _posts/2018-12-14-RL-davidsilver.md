@@ -5,10 +5,8 @@ date: 2018-12-14
 categories: blog
 tags: [RL,ML]
 ---
-**Warning: This is a rant post containing a bunch of unorganized thoughts yet. This will be used as a resource for more structured posts later**
+**Warning: This is just a quick note containing a bunch of unorganized thoughts yet. This will be used as a resource for more structured posts later**
 
-> “If people do not believe that mathematics is simple, it is only because they do not realize how complicated life is.” — John von Neumann\\
-The world is so complicated to model.
 
 # Lecture 1: Introduction to Reinforcement Learning
 RL using the reward assumption. It states that:
@@ -25,7 +23,7 @@ State:
 ![](https://raw.githubusercontent.com/thesunkid19/blog/gh-pages/img/RLagenttaxonomy.jpg)
 
 # Lecture 2: Markov Decision Processes
----
+
 **Markov process** is a tuple $<S,Pi>$  
 - $S$ is a set of (finite) states  
 - $P$ is a state transition probability matrix add (Reward, discount value)  
@@ -177,15 +175,15 @@ Dyna works better and more efficient than Q-learning.
 
 ## Simulation-Based search for planning
 - Forward search: just look ahead and focus on the best action next stage and then next and next. We don't need to solve MDP, just sub-MDP from NOW (root node).
-- Simulation-Based Search: Forward search using sample-based planning to simulate episodes of experiences $\left{ s _ { t } ^ { k } , A _ { t } ^ { k } , R _ { t + 1 } ^ { k } , \ldots , S _ { T } ^ { k } \right} _ { k = 1 } ^ { K } \sim \mathcal { M } _ { \nu }$, (capital character = sampled signal). Apply different model-free RL methods give diff search method: 
+- Simulation-Based Search: Forward search using sample-based planning to simulate episodes of experiences $\left\{ s _ { t } ^ { k } , A _ { t } ^ { k } , R _ { t + 1 } ^ { k } , \ldots , S _ { T } ^ { k } \right\} _ { k = 1 } ^ { K } \sim \mathcal { M } _ { \nu }$ , (capital character = sampled signal). Apply different model-free RL methods give diff search method: 
 + Simple Monte-Carlo Search: (1) give a model and a simulation policy $\pi$ (2) each $a \in \mathcal { A }$: Evaluate Q_value by mean return from simulated episodes (3) Select action in next state of root with max value.
 + Monte-Carlo Tree Search: Just Monte-Carlo control applied to simulated experience. Don't just look ahead, build a tree!
 + TD Search: Using TD instead of MC, that's it!
 
-$\left\{ s _ { t } ^ { k } , A _ { t } ^ { k } , R _ { t + 1 } ^ { k } , \ldots , S _ { T } ^ { k } \right\} _ { k = 1 } ^ { K } \sim \mathcal { M } _ { \nu }$
 
 Summary: Planning, simulation-based search and effective method of planning it just use a model and apply to sample tranjectories to imagine what to happend next, build the tree and combine RL method (MC,TD,...)
 
+$${ s _ { t } ^ { k } , A _ { t } ^ { k } , R _ { t + 1 } ^ { k } , \ldots , S _ { T } ^ { k } } _ { k = 1 } ^ { K } \sim \mathcal { M } _ { \nu }$$
 
 
 # Lecture 9: Exploration and Exploitation 
@@ -200,10 +198,14 @@ There are few methods to approach this problem:
 This lecture introduce new term: 
 - Total regret (regret for many steps - opportunity loss) - $L _ { t } = \mathbb { E } \left[ \sum _ { \tau = 1 } ^ { t } V ^ { * } - Q \left( a _ { \tau } \right) \right]$ which $V ^ { * } = Q \left( a ^ { * } \right) = \max _ { a \in \mathcal { A } } Q ( a )$ is the optimal value.
 - Finding way to minimize total regret <=> maximize(cumulative reward).
-- $L_{t} =\mathbb{E}\left[ \sum_{\tau=1}^{t} V^{*} - Q(a_\tau)\right] = \sum _ { a \in \mathcal { A } } \mathbb { E } \left[ N _ { t } ( a ) \right] \left( V ^ { * } - Q ( a ) \right) = \sum_{\a in \mathcal A} \mathbb { E }[N _ { t } ( a )]\Delta _ { a }$ with the gap between optimal action value and value of action $a$; $N _ { t } ( a )$ is the expected number of selections for action a.
-- We try to find a lower bound for this function by the time-steps. Which is indicated by $\epsilon$-greedy, but $\epsilon$-greedy seems not real because we don't have the gaps $\Delta _ { a } = V^* - Q(a)$. 
+- $L_{t} =\mathbb{E}\left[ \sum_{\tau=1}^{t} V^{*} - Q(a_\tau)\right] = \sum _ { a \in \mathcal { A } } \mathbb { E } \left[ N _ { t } ( a ) \right] \left( V ^ { * } - Q ( a ) \right) = \sum_{a \in \mathcal {A}} \mathbb { E }[N _ { t } ( a )]\Delta _ { a }$ with $\Delta _ { a }$ is the gap between optimal action value $V^ *$ and value of action $a$; $N _ { t } ( a )$ is the expected number of selections for action a. While we don't know about the gap, the good algorithm need to minimize the Regret.
+- Things don't work (linear with total regret): always explore, never explore, act greedy or act $\epsilon$-greedy
+- Thing seems to work: Decaying $\epsilon$-greedy (but it requires the knowledge of gap), Upper Confidence Bounds, Thompson Sampling.
+- What does `work` mean: achieve Lower bound.
 
-We can explore UCB and Thompson Sampling, it seems helpful but I don't fully understand yet.
+### Upper Confidence Bounds
+
+We introduce an upper confidence $\hat { U } _ { t } ( a )$ for each action value so $Q ( a ) \leq \hat { Q } _ { t } ( a ) + \hat { U } _ { t } ( a )$ with high probability. ($\hat { U } _ { t } ( a )$ can be the varience of action value distribution)
 
 
 
