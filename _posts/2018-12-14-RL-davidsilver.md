@@ -165,10 +165,10 @@ This lecture cover model-based section, learning to model the world and plan in 
 
 A model is parameterised by a tuple $< \mathrm { P } { \mathrm { I } } , \mathrm { R } { \eta } >$ - state of transition and reward. We infer the model just by counting or averaging the occurences ($<s_t+1,a_t+1>$) for all visit from each pair $<s_t,a_t>$. 
 
-## Sample-based planning: 
+## Sample-based planning
 A model is just used only for generating sampling (Simulated experience). After learning model, agent sampling S and R from its model and apply model-free RL method . (Learn about the world -> sample from our knowledge -> solve by model-free RL)>
 
-## Dyna: 
+## Dyna
 Combine both learning from real experiences & planning from simulated experiences
 
 Here is the Dyna algorithm:
@@ -177,14 +177,14 @@ Dyna works better and more efficient than Q-learning.
 
 ## Simulation-Based search for planning
 - Forward search: just look ahead and focus on the best action next stage and then next and next. We don't need to solve MDP, just sub-MDP from NOW (root node).
-- Simulation-Based Search: Forward search using sample-based planning to simulate episodes of experiences $\left\{ s _ { t } ^ { k } , A _ { t } ^ { k } , R _ { t + 1 } ^ { k } , \ldots , S _ { T } ^ { k } \right\} _ { k = 1 } ^ { K } \sim \mathcal { M } _ { \nu }$, (capital character = sampled signal). Apply different model-free RL methods give diff search method: 
+- Simulation-Based Search: Forward search using sample-based planning to simulate episodes of experiences $\left{ s _ { t } ^ { k } , A _ { t } ^ { k } , R _ { t + 1 } ^ { k } , \ldots , S _ { T } ^ { k } \right} _ { k = 1 } ^ { K } \sim \mathcal { M } _ { \nu }$, (capital character = sampled signal). Apply different model-free RL methods give diff search method: 
 + Simple Monte-Carlo Search: (1) give a model and a simulation policy $\pi$ (2) each $a \in \mathcal { A }$: Evaluate Q_value by mean return from simulated episodes (3) Select action in next state of root with max value.
 + Monte-Carlo Tree Search: Just Monte-Carlo control applied to simulated experience. Don't just look ahead, build a tree!
 + TD Search: Using TD instead of MC, that's it!
 
 
 Summary: Planning, simulation-based search and effective method of planning it just use a model and apply to sample tranjectories to imagine what to happend next, build the tree and combine RL method (MC,TD,...)
-**ζ**
+
 
 
 # Lecture 9: Exploration and Exploitation 
@@ -196,12 +196,13 @@ There are few methods to approach this problem:
 - Optimism in the Face of Uncertainty: just do which state/action with the highest uncertainty.
 - Information state space: use a model to determine the helpful information in each state.
 
-This lecture introduce new term: Regret - $L _ { t } = \mathbb { E } \left[ \sum _ { \tau = 1 } ^ { t } V ^ { * } - Q \left( a _ { \tau } \right) \right]$ ($V ^ { * } = Q \left( a ^ { * } \right) = \max _ { a \in \mathcal { A } } Q ( a )$ which $V^{ * }$ (optimal value) - opportunity loss and find a way to minimize it, cause maximize(cumulative reward) <=> minimize(total regret). We try to find a lower bound for this function by the time-steps. Which is indicated by $\epsilon-greedy$, but $\epsilon-greedy$ seems not real because we don't have the gaps $\Delta _ { a } = V^* - Q(a)$. 
+This lecture introduce new term: 
+- Regret - $L _ { t } = \mathbb { E } \left[ \sum _ { \tau = 1 } ^ { t } V ^ { * } - Q \left( a _ { \tau } \right) \right]$ ($V ^ { * } = Q \left( a ^ { * } \right) = \max _ { a \in \mathcal { A } } Q ( a )$ - optimal value - opportunity loss and find a way to minimize it, cause maximize(cumulative reward) <=> minimize(total regret). We try to find a lower bound for this function by the time-steps. Which is indicated by $\epsilon-greedy$, but $\epsilon-greedy$ seems not real because we don't have the gaps $\Delta _ { a } = V^* - Q(a)$. 
 
 We can explore UCB and Thompson Sampling, it seems helpful but I don't fully understand yet.
 
 
 
- 
+ **--ζ--**
   
 
