@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>SGAE/BT/GT results visualization</title>
+    <title>neuraltalk2 results visualization</title>
     <script src="jquery-1.8.3.min.js"></script>
     <style>
     body {
@@ -57,15 +57,16 @@
       }
     }
     $(window).scroll(loadVisible);
-    $.getJSON('_vis.json?t=' + +new Date, function (data) {
+    $.getJSON('vis.json?t=' + +new Date, function (data) {
       $('#results').html('');
       for (var i = 0; i < data.length; i++) {
-        var path = 'imgs/' + data[i].image_id + '.jpg';
+        //var path = 'https://multimedia-commons.s3-us-west-2.amazonaws.com/data/images/'+ data[i].slash + '/' + data[i].image_id + '.jpg'; 
+        var path = '/thu.jpg';
         $('<div class="result">')
           .data('image', path)
-          .append('<p> BT:'+data[i].caption+'</p>')
-          .append($('<p>').text('SG:'+data[i].sgcaption))
-          .append($('<p>').text('GT:'+data[i].gtcaption1))
+          .append('<p> Trait:'+data[i].trait+'</p>')
+          .append('<p> GT:'+data[i].gt+'</p>')
+          .append($('<p>').text(data[i].caption))
           .appendTo('#results');
       }
       loadVisible();

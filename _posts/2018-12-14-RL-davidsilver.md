@@ -122,11 +122,11 @@ We use GD to minimize the gap between our approximator and the real value functi
 
 - But the big problem is, how we can take the ground-true value func (because it's not like supervised learning that we can directly assign one)? 
 
-From the previous lecture, we know that we can substitute a target for $v\pi(S)$, using MC, TD and TD($\lambda$). By that, we can create an supervised training dataset to train agent.
+From the previous lecture, we know that we can substitute a target for $V_\pi(S)$, using MC, TD and TD($\lambda$). By that, we can create an supervised training dataset to train agent.
 
 - Why MC converges to local optimum while TD(0) converge (close) to global minimum?
 
-When we get the an approximation value function, we just act greedy to the function and update it. It turns out not converge to optimal policy but just approximate optimal policy. This idea used for both State-value function approximation $v_{\pi}(S)$ and Action-value function approximation $Q_{\pi}(S,A)$
+When we get the an approximation value function, we just act greedy to the function and update it. It turns out not converge to optimal policy but just approximate optimal policy. This idea used for both State-value function approximation $V_{\pi}(S)$ and Action-value function approximation $Q_{\pi}(S,A)$
 
 Using bootstap $\lambda$ usually help, the question is what hypyerparameter is good. 
 In prediction, TD or TD($\lambda$) don't work in some situation. So gradient TD fixes that.
@@ -207,7 +207,6 @@ This lecture introduce new term:
 We introduce an upper confidence $\hat { U } _ { t } ( a )$ for each action value so $Q ( a ) \leq \hat { Q } _ { t } ( a ) + \hat { U } _ { t } ( a )$ with high probability. ($\hat { U } _ { t } ( a )$ can be the varience of action value distribution). Then act greedy (select action maximising) to UCB.
 
 
-
- **--ζ--**
+ ***ζ***
   
 
