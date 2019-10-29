@@ -60,7 +60,7 @@
     $.getJSON('vis.json?t=' + +new Date, function (data) {
       $('#results').html('');
       for (var i = 0; i < data.length; i++) {
-        var path = data[i].image_dir;
+        var path = 'https://thesunkid19.github.io/blog/'+data[i].image_dir;
         $('<div class="result">')
           .data('image', path)
           .append($('<p>').text(data[i].caption))
