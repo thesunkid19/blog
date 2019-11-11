@@ -60,8 +60,7 @@
     $.getJSON('vis.json?t=' + +new Date, function (data) {
       $('#results').html('');
       for (var i = 0; i < data.length; i++) {
-        //var path = 'https://multimedia-commons.s3-us-west-2.amazonaws.com/data/images/'+ data[i].slash + '/' + data[i].image_id + '.jpg'; 
-        var path = 'https://docs.google.com/uc?export=download&id=1pcd_irNpCUSfTgONpN5a9tt-L23scX56';
+        var path = 'https://multimedia-commons.s3-us-west-2.amazonaws.com/data/images/'+ data[i].slash + '/' + data[i].image_id + '.jpg'; 
         $('<div class="result">')
           .data('image', path)
           .append('<p> Trait:'+data[i].trait+'</p>')
