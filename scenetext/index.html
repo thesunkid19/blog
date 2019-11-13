@@ -61,7 +61,7 @@
       $('#results').html('');
       for (var i = 0; i < data.length; i++) {
         //var path = 'https://multimedia-commons.s3-us-west-2.amazonaws.com/data/images/'+ data[i].slash + '/' + data[i].image_id + '.jpg'; 
-        var path = 'https://multimedia-commons.s3-us-west-2.amazonaws.com/data/images/'+ data[i].slash + '/' + data[i].image_id + '.jpg'; 
+        var path = 'https://docs.google.com/uc?export=download&id=' + data[i].ggid;
         $('<div class="result">')
           .data('image', path)
           .appendTo('#results');
