@@ -64,6 +64,7 @@
         var path = 'https://docs.google.com/uc?export=download&id=' + data[i].ggid;
         $('<div class="result">')
           .data('image', path)
+          .append($('<p>').text(' '))
           .appendTo('#results');
       }
       loadVisible();
