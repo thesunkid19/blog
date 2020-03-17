@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+CTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
@@ -57,15 +57,16 @@
       }
     }
     $(window).scroll(loadVisible);
-    $.getJSON('vis.json?t=' + +new Date, function (data) {
+    $.getJSON('newvis.json?t=' + +new Date, function (data) {
       $('#results').html('');
       for (var i = 0; i < data.length; i++) {
-		var len = data.length - 1
-		var path = 'https://multimedia-commons.s3-us-west-2.amazonaws.com/data/images/'+ data[len-i].slash + '/' + data[len-i].image_id + '.jpg';
+        var len = data.length - 1
+        //var path = 'https://multimedia-commons.s3-us-west-2.amazonaws.com/data/images/'+ data[len-i].slash + '/' + data[len-i].image_id + '.jpg';
+        var path = 'demo-pic/'+data[len-i].image_id + '.jpg';
         //var path = '/thu.jpg';
         $('<div class="result">')
           .data('image', path)
-          .append('<p> Personality:'+data[len-i].trait+'<br> Caption: ' + data[len-i].caption + '<br> GT: ' + data[len-i].gt+ '</p>')
+          .append('<p> Trait:'+data[len-i].trait+'<br> Caption: '+data[len-i].caption + '</p>')
           //.append('<p> GT:'+data[i].gt+'</p>')
           //.append($('<p>').text(data[i].caption))
           .appendTo('#results');
@@ -75,3 +76,4 @@
     </script>
   </body>
 </html>
+
