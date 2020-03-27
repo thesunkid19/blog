@@ -57,7 +57,7 @@
       }
     }
     $(window).scroll(loadVisible);
-    $.getJSON('gumbel.json?t=' + +new Date, function (data) {
+    $.getJSON('vis_gumbel.json?t=' + +new Date, function (data) {
       $('#results').html('');
       for (var i = 0; i < data.length; i++) {
 		var len = data.length - 1
@@ -65,7 +65,7 @@
         //var path = '/thu.jpg';
         $('<div class="result">')
           .data('image', path)
-          .append('<p> Personality:'+data[len-i].trait+'<br> Gumbel-Caption: ' + data[len-i].gumbel+ '<br> GT: ' + data[len-i].gt+ '</p>')
+          .append('<p> Personality:'+data[len-i].trait+'<br> Gumbel-Caption: ' + data[len-i].gumbel + '</p>') //+ '<br> GT: ' + data[len-i].gt+ '</p>')
           //.append('<p> GT:'+data[i].gt+'</p>')
           //.append($('<p>').text(data[i].caption))
           .appendTo('#results');
