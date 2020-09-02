@@ -9,7 +9,7 @@ tags: [DL,ML]
 
 > “Sometimes it happens that a man’s circle of horizon becomes smaller and smaller, and as the radius approaches zero it concentrates on one point. And then that becomes his point of view.” — David Hilbert
 
-![](https://raw.githubusercontent.com/thesunkid19/blog/gh-pages/img/representation-ahung.jpg)
+![](https://raw.githubusercontent.com/thsunkid/blog/gh-pages/img/representation-ahung.jpg)
 
 Every task in machine learning/ deep learning can be acknowledged from point of the view of representation learning. (thought distribution learning) 
 - **In CNN (spatial model):** we find a function in function space that map input from sensor (image) to latent spatial vector which represent our thought about context & object in the image. We use some deep priors to push some constraints on optimizing/finding process that make it easier (if not, we need more large data and computational resources), something like spartial pattern, local feature and sharing feature weight (express in filters).

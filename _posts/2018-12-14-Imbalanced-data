@@ -17,7 +17,7 @@ Chẳng hạn ta muốn trainning 1 model classifer hình ảnh cho xe ô tô t�
 ### Sử dụng metric phù hợp
 Việc dựa vào Accuracy của quá trình trainning để đánh giá mức độ chính xác của thuật toán trong trường hợp này là không phù hợp. F1-score, mặc dù không phải là một metric sử dụng để optimize (có thể dùng soft F1-score), nhưng là một metric tốt dùng cho việc đánh giá model trong trường hợp này, đặc biệt là Macro-F1 (thang F1 trung bình cộng tất cả F1 của nhiều class trong bài toán multiclass). 
 
-![](https://raw.githubusercontent.com/thesunkid19/blog/gh-pages/img/Precisionrecall.svg.png)
+![](https://raw.githubusercontent.com/thsunkid/blog/gh-pages/img/Precisionrecall.svg.png)
 
 Ngoài ra còn một số metric khác phù hợp cho bài toán này [[1]](https://machinelearningmastery.com/classification-accuracy-is-not-enough-more-performance-measures-you-can-use/)
 
@@ -26,7 +26,7 @@ Bằng cách duplicate nhiều lần dữ liệu hình ảnh của class có s�
 Tuy nhiên, cần thận trọng trong việc chọn số lần duplicate mẫu, vì về bản chất model CNN sau khi trainning sẽ giữ  lại (học) các invariant features nhận được từ trainning, việc 1 bức ảnh xuất hiện quá nhiều lần sẽ khiến model bị overfitting với các feature ở bức ảnh đó. Có thể thấy như trong giải pháp của đội tham gia Zalo AI trên, tỷ lệ upsampling data được tune khá là công phu. 
 
 Ngoài ra, ta còn có thể oversampling bằng cách augmentation data cho các lớp có số lượng mẫu ít, trong khi không apply điều này cho các lớp còn lại.
-![](https://raw.githubusercontent.com/thesunkid19/blog/gh-pages/img/oversampling.png)
+![](https://raw.githubusercontent.com/thsunkid/blog/gh-pages/img/oversampling.png)
 
 ### Undersampling data
 Tương tự như ý tưởng oversampling, phương pháp undersampling chỉ thực hiện ở giai đoạn preprocessing. Thay vì duplicate các mẫu ở lớp yếu, ta loại bỏ đi bớt mẫu ở các lớp có nhiều mẫu đi để có được một bộ data cân bằng.
