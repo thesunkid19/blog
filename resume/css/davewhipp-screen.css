@@ -188,6 +188,11 @@ strong {
 }
 
 
+span {
+	padding-bottom: 0px;
+	border-bottom: 0.5px solid;
+	line-height: 60px;
+  }
 
 /*
 @media only screen and (max-width: 480px) {
